@@ -1,6 +1,7 @@
 package model.bean;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Course {
@@ -10,6 +11,22 @@ public class Course {
     private String description;
     private Date startDate;
     private Date endDate;
+    public Course(){}
+    public Course(String id,String name, String price, String description, String startDate, String endDate) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            this.startDate = sdf.parse(startDate);
+            this.endDate = (endDate != null && !endDate.isEmpty()) ? sdf.parse(endDate) : null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Getters and Setters
     public String getId() {
