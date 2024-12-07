@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" /><div class="content">
-    <link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
     <div class="container">
         <h1>Update User</h1>
         <form action="/dashboard/update-user" method="POST">
