@@ -1,13 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>
+<jsp:include page="/layout/admin/header.jsp" />
+<jsp:include page="/layout/admin/sidebar.jsp" />
+<div class="content">
+    <h1>Welcome to Admin Dashboard</h1>
+    <p>Select a page from the sidebar to manage.</p>
+</div>
+<jsp:include page="/layout/admin/footer.jsp" />

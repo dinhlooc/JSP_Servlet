@@ -8,7 +8,7 @@ public class DBContext {
 
     public DBContext() {
         try {
-            String url = "jdbc:mysql://localhost:3306/DULIEU";
+            String url = "jdbc:mysql://localhost:3306/ltm";
             Class.forName("com.mysql.jdbc.Driver");
             String username = "root";
             String password = "1503";
