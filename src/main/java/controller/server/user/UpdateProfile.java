@@ -1,4 +1,4 @@
-package controller.client.user;
+package controller.server.user;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,13 +10,13 @@ import model.bo.UserBO;
 
 import java.io.IOException;
 
-@WebServlet(name = "UpdateUserServlet", value = "/dashboard/update-user")
-public class UpdateUser extends HttpServlet {
+@WebServlet(name = "UpdateProfileServlet", value = "/update-user")
+public class UpdateProfile extends HttpServlet {
     private String message;
     private UserBO userBO;
     public void init() {
         message = "Hello World!";
-         userBO=new UserBO();
+        userBO=new UserBO();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -25,7 +25,7 @@ public class UpdateUser extends HttpServlet {
             try{
                 User user= userBO.getUserById(id);
                 request.setAttribute("user", user);
-                request.getRequestDispatcher("/pages/user/update-user.jsp").forward(request,response);
+                request.getRequestDispatcher("/pages/users/update-user.jsp").forward(request,response);
             }catch (Exception e){
                 request.getRequestDispatcher("/404notfound/index.jsp").forward(request, response);
                 e.printStackTrace();
@@ -39,17 +39,15 @@ public class UpdateUser extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String id = request.getParameter("Id");
         String fullName = request.getParameter("Fullname");
-        String email = request.getParameter("Email");
         String password = request.getParameter("Password");
-        String role = request.getParameter("Role");
+        String newPassword = request.getParameter("NewPassword");
         User user=userBO.getUserById(id);
         if (user==null){
             response.sendRedirect("/dashboard/users");
         }
         try {
             user.setFullName(fullName);
-            user.setRole(role);
-            user.setPassword(password);
+            user.setPassword(newPassword);
             userBO.updateUser(user);
             response.sendRedirect("/dashboard/users");
         } catch (Exception e) {

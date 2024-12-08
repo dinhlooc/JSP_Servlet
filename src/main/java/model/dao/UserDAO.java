@@ -14,7 +14,6 @@ public class UserDAO extends DBContext {
     public UserDAO() {
         super();
     }
-
     public List<User> search(String type, String query) {
         List<User> list = new ArrayList<>();
         String sql = "";
