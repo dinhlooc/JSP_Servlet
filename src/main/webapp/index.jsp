@@ -53,7 +53,6 @@
 <!--
   - #HEADER
 -->
-
 <jsp:include page="layout/client/header.jsp"/>
 <main>
     <article>
@@ -132,13 +131,29 @@
                             <div class="abs-badge">
                                 <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
                                 <span class="span">
-                            <%= course.getStartDate() %> - <%= course.getEndDate() %></span>
+                                    <script>
+
+            function calculateMonths(startDate, endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+
+                const yearsDiff = end.getFullYear() - start.getFullYear();
+                const monthsDiff = end.getMonth() - start.getMonth();
+
+                return yearsDiff * 12 + monthsDiff;
+            }
+            const startDate = '<%= course.getStartDate() %>';
+            const endDate = '<%= course.getEndDate() %>';
+
+            document.write(calculateMonths(startDate, endDate) + " tháng");
+        </script>
+                                </span>
                             </div>
 
                             <div class="card-content">
                                 <h3 class="h3">
                                     <span class="badge">Beginner</span>
-                                    <a href="#" class="card-title"><%= course.getName() %></a>
+                                    <a href="course-detail?id=<%= course.getId() %>" class="card-title"><%= course.getName() %></a>
                                 </h3>
 
                                 <div class="wrapper">
@@ -169,7 +184,7 @@
                     %>
                 </ul>
 
-                <a href="#" class="btn has-before">
+                <a href="/courses-search" class="btn has-before">
                     <span class="span">Xem thêm khóa học</span>
                     <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                 </a>

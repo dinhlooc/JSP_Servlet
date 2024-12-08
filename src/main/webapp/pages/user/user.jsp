@@ -4,7 +4,7 @@
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 <!-- Include Bootstrap CSS from your local folder -->
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <div class="content p-4">
     <h1 class="mb-4 text-center">User Management</h1>
     <p class="text-center mb-4">Here, you can manage all user records. You can search for users, and update or delete their information.</p>
@@ -29,7 +29,7 @@
         </form>
         <!-- Button to create new user -->
         <div>
-            <button onclick="window.location.href='/dashboard/create-user'" class="btn btn-success btn-sm">Create New User</button>
+            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Create New User</button>
         </div>
     </div>
     <!-- User Table -->

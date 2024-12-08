@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <style>
     .btn:hover {
         opacity: 0.9;
@@ -35,7 +35,7 @@
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
+            <thead  style="background-color: hsl(170, 75%, 41%);">
             <tr>
                 <th scope="col">Mã khoá học</th>
                 <th scope="col">Tên</th>
@@ -58,17 +58,21 @@
                 <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy").format(course.getStartDate()) %></td>
                 <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy").format(course.getEndDate()) %></td>
                 <td class="text-center">
-                    <a href="courses/edit?id=<%= course.getId() %>" class="btn btn-warning btn-sm me-1">
-                         Sửa
-                    </a>
-                    <a href="courses/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Bạn muốn xoá khoá học này?');">
-                         Xoá
-                    </a>
-                    <a href="/courses/view?id=<%= course.getId() %>" class="btn btn-info btn-sm me-1">
-                        Xem
-                    </a>
+                    <div class="d-flex">
+                        <a href="/dashboard/course/update?id=<%= course.getId() %>" class="btn btn-warning btn-sm mr-2">
+                            Sửa
+                        </a>
+                        <a href="dashboard/course/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm mr-2"
+                           onclick="return confirm('Bạn muốn xoá khoá học này?');">
+                            Xoá
+                        </a>
+                        <a href="/dashboard/course/view?id=<%= course.getId() %>" class="btn btn-info btn-sm">
+                            Xem
+                        </a>
+                    </div>
                 </td>
+
+
             </tr>
             <%
                     }
@@ -88,7 +92,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="courses/add">
+                <form method="post" action="/dashboard/course/create">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="courseId" class="form-label">Mã khoá học</label>
@@ -139,7 +143,7 @@
 
 
 <!-- Include Bootstrap JS and dependencies from your local folder -->
-<script src="../../css/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     function checkCourseIdExistence() {
@@ -201,7 +205,6 @@
         }
     });
 
-    // Kiểm tra ngày kết thúc
     document.getElementById("courseEndDate").addEventListener("blur", function () {
         const endDate = new Date(this.value);
         const startDate = new Date(document.getElementById("courseStartDate").value);

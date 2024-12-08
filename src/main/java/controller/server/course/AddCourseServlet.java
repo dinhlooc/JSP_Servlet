@@ -10,7 +10,7 @@ import model.bean.Course;
 import model.bo.CourseBO;
 
 import java.io.IOException;
-import java.util.UUID;
+
 
 @WebServlet("/dashboard/course/create")
 public class AddCourseServlet extends HttpServlet {

@@ -1,4 +1,4 @@
-package controller.server;
+package controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,11 +24,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
         List<Course> courses;
-        if (search != null && !search.trim().isEmpty()) {
-            courses = courseBO.searchCourses(search);
-        } else {
-            courses = courseBO.getAllCourses();
-        }
+        courses=courseBO.getTopCoursesByRegistrations(3);
         for (Course course : courses) {
             int studentCount = courseBO.getStudentCountByCourseId(course.getId());
             request.setAttribute("studentCount_" + course.getId(), studentCount);

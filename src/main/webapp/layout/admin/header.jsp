@@ -3,7 +3,7 @@
 <head>
     <title>Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/user.css">
     <style>
         body {
             margin: 0;
