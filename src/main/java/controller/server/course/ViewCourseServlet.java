@@ -14,7 +14,7 @@ import model.bo.RegistrationProfileBO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/courses/view")
+@WebServlet("/dashboard/course/view")
 public class ViewCourseServlet extends HttpServlet {
     private CourseBO courseBO;
     private RegistrationProfileBO registrationProfileBO;

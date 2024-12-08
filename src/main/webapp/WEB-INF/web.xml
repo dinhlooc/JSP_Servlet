@@ -3,7 +3,56 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
-<!--    <welcome-file-list>-->
-<!--        <welcome-file>/</welcome-file>-->
-<!--    </welcome-file-list>-->
+    <filter>
+        <filter-name>FilterLogin</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterLogin</filter-name>
+        <url-pattern>/change-password</url-pattern>
+        <url-pattern>/profile</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/dashboard/course/create</url-pattern>
+        <url-pattern>/dashboard/course/checkid</url-pattern>
+        <url-pattern>/dashboard/course/delete</url-pattern>
+        <url-pattern>/dashboard/course/update</url-pattern>
+        <url-pattern>/dashboard/courses</url-pattern>
+        <url-pattern>/dashboard/course/view</url-pattern>
+        <url-pattern>/dashboard/registration/create</url-pattern>
+        <url-pattern>/dashboard/registration/delete</url-pattern>
+        <url-pattern>/dashboard/registrations</url-pattern>
+        <url-pattern>/dashboard/registrations/search</url-pattern>
+        <url-pattern>/dashboard/registration/update</url-pattern>
+        <url-pattern>/dashboard/user/create</url-pattern>
+        <url-pattern>/dashboard/user/delete</url-pattern>
+        <url-pattern>/dashboard/users</url-pattern>
+        <url-pattern>/dashboard/user/update</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterAdmin</filter-name>
+        <filter-class>filter.AdminFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterAdmin</filter-name>
+        <url-pattern>/dashboard/course/create</url-pattern>
+        <url-pattern>/dashboard/course/checkid</url-pattern>
+        <url-pattern>/dashboard/course/delete</url-pattern>
+        <url-pattern>/dashboard/course/update</url-pattern>
+        <url-pattern>/dashboard/courses</url-pattern>
+        <url-pattern>/dashboard/course/view</url-pattern>
+        <url-pattern>/dashboard/registration/create</url-pattern>
+        <url-pattern>/dashboard/registration/delete</url-pattern>
+        <url-pattern>/dashboard/registrations</url-pattern>
+        <url-pattern>/dashboard/registrations/search</url-pattern>
+        <url-pattern>/dashboard/registration/update</url-pattern>
+        <url-pattern>/dashboard/user/create</url-pattern>
+        <url-pattern>/dashboard/user/delete</url-pattern>
+        <url-pattern>/dashboard/users</url-pattern>
+        <url-pattern>/dashboard/user/update</url-pattern>
+
+
+    </filter-mapping>
 </web-app>

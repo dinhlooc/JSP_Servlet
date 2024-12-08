@@ -26,23 +26,18 @@ public class LoginServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String email = request.getParameter("Email");
-        String password = request.getParameter("Password");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
         User user = userDAO.getByEmail(email);
+
         if (user == null) {
-            request.setAttribute("error", "username invalid");
+            request.setAttribute("error_email", "Email invalid");
             request.getRequestDispatcher("pages/auth/login.jsp").forward(request, response);
         } else {
-            String pass = "";
-            try {
-                pass = AESUtil.decrypt(user.getPassword());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            if (!pass.equals(password)) {
-                request.setAttribute("error", "password incorrect");
+            if (!user.getPassword().equals(password)) {
+                request.setAttribute("error_pass", "password incorrect");
                 request.getRequestDispatcher("pages/auth/login.jsp").forward(request, response);
             } else {
                 session.setAttribute("user", user);

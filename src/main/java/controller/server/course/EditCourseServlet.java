@@ -11,7 +11,7 @@ import model.bo.CourseBO;
 
 import java.io.IOException;
 
-@WebServlet("/courses/edit")
+@WebServlet("/dashboard/course/update")
 public class EditCourseServlet extends HttpServlet {
     private CourseBO courseBO;
 

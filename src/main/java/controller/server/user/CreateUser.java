@@ -11,7 +11,7 @@ import model.bo.UserBO;
 import java.io.IOException;
 import java.util.UUID;
 
-@WebServlet(name = "CreateUserServlet", value = "/dashboard/create-user")
+@WebServlet(name = "CreateUserServlet", value = "/dashboard/user/create")
 public class CreateUser extends HttpServlet {
     private String message;
     private UserBO userBO;

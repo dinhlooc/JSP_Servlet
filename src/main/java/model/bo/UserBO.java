@@ -11,6 +11,9 @@ public class UserBO {
     public List<User> searchUsersByName(String type, String query) {
         return userDAO.search(type,query);
     }
+    public List<User> getAll() {
+        return userDAO.getALL();
+    }
     public User getUserById(String id) {
         if (id == null || id.isEmpty()) {
             throw new IllegalArgumentException("ID cannot be null or empty");

@@ -11,7 +11,7 @@ import model.bean.Course;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/courses")
+@WebServlet("/dashboard/courses")
 public class ListCourseServlet extends HttpServlet {
     private CourseBO courseBO;
 

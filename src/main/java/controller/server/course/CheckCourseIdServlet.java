@@ -9,7 +9,7 @@ import model.bo.CourseBO;
 
 import java.io.IOException;
 
-@WebServlet("/courses/checkid")
+@WebServlet("/dashboard/course/checkid")
 public class CheckCourseIdServlet extends HttpServlet {
     private CourseBO courseBO;
 

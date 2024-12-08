@@ -9,6 +9,8 @@ import model.bean.User;
 import model.dao.UserDAO;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 @WebServlet(name = "RegisterServletServlet", value = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -21,19 +23,21 @@ public class RegisterServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("Sing_up/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/auth/register.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String name = request.getParameter("Fullname");
-        String email = request.getParameter("Email");
-        String password = request.getParameter("Password");
+        String name = request.getParameter("fullname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         if(userDAO.getByEmail(email) != null){
             request.setAttribute("error", "Email already exists");
             request.getRequestDispatcher("pages/auth/register.jsp").forward(request, response);
         }else{
+            String id = UUID.randomUUID().toString();
             User user=new User();
+            user.setId(id);
             user.setEmail(email);
             user.setFullName(name);
             user.setPassword(password);
@@ -41,9 +45,6 @@ public class RegisterServlet extends HttpServlet {
             userDAO.create(user);
             response.sendRedirect("/login");
         }
-
-
-        response.sendRedirect("/home");
     }
 
     public void destroy() {

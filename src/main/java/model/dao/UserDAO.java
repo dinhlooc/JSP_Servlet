@@ -73,7 +73,40 @@ public class UserDAO extends DBContext {
 
         return list;
     }
+    public List<User> getALL(){
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT * FROM User";
 
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String hashPassword = rs.getString("password");
+                String password = "";
+                try {
+                    password = AESUtil.decrypt(hashPassword);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+                User user = new User(
+                        rs.getString("Id"),
+                        rs.getString("full_name"),
+                        rs.getString("email"),
+                        password,
+                        rs.getString("role")
+                );
+                list.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
     public User getById(String id) {
         String sql = "select * from user where id = ?";
         try {

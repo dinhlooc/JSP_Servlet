@@ -10,7 +10,7 @@ import model.bo.UserBO;
 
 import java.io.IOException;
 
-@WebServlet(name = "UpdateUserServlet", value = "/dashboard/update-user")
+@WebServlet(name = "UpdateUserServlet", value = "/dashboard/user/update")
 public class UpdateUser extends HttpServlet {
     private String message;
     private UserBO userBO;

@@ -8,10 +8,10 @@ public class DBContext {
 
     public DBContext() {
         try {
-            String url = "jdbc:mysql://localhost:3306/register_course";
+            String url = "jdbc:mysql://localhost:3306/ltm";
             Class.forName("com.mysql.jdbc.Driver");
             String username = "root";
-            String password = "12345Thanh";
+            String password = "1503";
             connection = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();

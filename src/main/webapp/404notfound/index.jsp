@@ -24,7 +24,7 @@
 
 </head>
 <body>
-<jsp:include page="../Component/header.jsp"></jsp:include>
+<jsp:include page="../layout/client/header.jsp"></jsp:include>
 <!-- Error 404 Template 1 - Bootstrap Brain Component -->
 <section class="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
@@ -44,6 +44,6 @@
         </div>
     </div>
 </section>
-<jsp:include page="../Component/footer.jsp"></jsp:include>
+<jsp:include page="../layout/client/footer.jsp"></jsp:include>
 </body>
 </html>

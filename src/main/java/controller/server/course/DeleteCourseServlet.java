@@ -10,7 +10,7 @@ import model.bo.CourseBO;
 
 import java.io.IOException;
 
-@WebServlet("/courses/delete")
+@WebServlet("/dashboard/course/delete")
 public class DeleteCourseServlet extends HttpServlet {
     private CourseBO courseBO;
 

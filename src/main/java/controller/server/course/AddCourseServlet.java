@@ -12,7 +12,7 @@ import model.bo.CourseBO;
 import java.io.IOException;
 import java.util.UUID;
 
-@WebServlet("/courses/add")
+@WebServlet("/dashboard/course/create")
 public class AddCourseServlet extends HttpServlet {
     private CourseBO courseBO;
 

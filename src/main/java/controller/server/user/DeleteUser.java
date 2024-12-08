@@ -9,7 +9,7 @@ import model.bo.UserBO;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeleteUserServlet", value = "/dashboard/delete-user")
+@WebServlet(name = "DeleteUserServlet", value = "/dashboard/user/delete")
 public class DeleteUser extends HttpServlet {
     private String message;
     private UserBO userBO;
