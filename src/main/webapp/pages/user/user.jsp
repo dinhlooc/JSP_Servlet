@@ -8,28 +8,30 @@
 <div class="content p-4">
     <h1 class="mb-4 text-center">User Management</h1>
     <p class="text-center mb-4">Here, you can manage all user records. You can search for users, and update or delete their information.</p>
-    <!-- Search Box with 4 options -->
+    <%
+        String query = request.getParameter("query") != null ? request.getParameter("query") : "";
+        String searchBy = request.getParameter("searchBy") != null ? request.getParameter("searchBy") : "";
+    %>
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <!-- Form tìm kiếm -->
         <form action="/dashboard/users" method="get" class="d-flex">
             <div class="mr-3">
-                <input type="text" name="query" class="form-control" placeholder="Search" />
+                <input type="text" name="query" class="form-control" placeholder="Search" value="<%= query %>" />
             </div>
             <div class="mr-3">
                 <select name="searchBy" class="form-control">
-                    <option value="id">ID</option>
-                    <option value="full_name">Full Name</option>
-                    <option value="email">Email</option>
-                    <option value="role">Role</option>
+                    <option value="id" <%= "id".equals(searchBy) ? "selected" : "" %>>ID</option>
+                    <option value="full_name" <%= "full_name".equals(searchBy) ? "selected" : "" %>>Full Name</option>
+                    <option value="email" <%= "email".equals(searchBy) ? "selected" : "" %>>Email</option>
+                    <option value="role" <%= "role".equals(searchBy) ? "selected" : "" %>>Role</option>
                 </select>
             </div>
             <div>
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
-        <!-- Button to create new user -->
         <div>
-            <button onclick="window.location.href='/dashboard/create-user'" class="btn btn-success btn-sm">Create New User</button>
+            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Create New
+                User</button>
         </div>
     </div>
     <!-- User Table -->
@@ -47,6 +49,13 @@
             <tbody>
             <%
                 List<User> users = (List<User>) request.getAttribute("users");
+                if (users == null || users.isEmpty()) {
+            %>
+            <tr>
+                <td colspan="5" class="text-center">Không có người dùng</td>
+            </tr>
+            <%
+            } else {
                 for (User user : users) {
             %>
             <tr>
@@ -56,12 +65,14 @@
                 <td><%= user.getRole() %></td>
                 <td>
                     <!-- Update Button -->
-                    <a href="/dashboard/update-user?id=<%= user.getId() %>" class="btn btn-warning btn-sm">Update</a>
+                    <a href="/dashboard/user/update?id=<%= user.getId() %>" class="btn btn-warning btn-sm">Update
+                    </a>
                     <!-- Delete Button -->
                     <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" data-userid="<%= user.getId() %>">Delete</button>
                 </td>
             </tr>
             <%
+                    }
                 }
             %>
             </tbody>
@@ -94,7 +105,7 @@
     $('#deleteModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var userId = button.data('userid'); // Extract info from data-* attributes
-        var deleteUrl = "/dashboard/delete-user?id=" + userId;
+        var deleteUrl = "/dashboard/user/delete?id=" + userId;
         // Set the delete button URL to the correct delete action
         var modal = $(this);
         modal.find('#deleteBtn').attr('href', deleteUrl);

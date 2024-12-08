@@ -1,48 +1,231 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/user.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <style>
-        body {
+        /* =========== Google Fonts ============ */
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+        /* =============== Globals ============== */
+        * {
+            font-family: "Ubuntu", sans-serif;
             margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        :root {
+            --blue: hsl(170, 75%, 41%);
+            --white: #fff;
+            --gray: #f5f5f5;
+            --black1: #222;
+            --black2: #999;
         }
 
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
-            padding: 10px;
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+        }
+
+        /* =============== Navigation ================ */
+        .navigation {
+            position: fixed;
+            width: 300px;
+            height: 100%;
+            background: hsl(170, 75%, 41%);
+            border-left: 10px solid hsl(170, 75%, 41%);
+            transition: 0.5s;
+            overflow: hidden;
+        }
+        .navigation.active {
+            width: 80px;
+        }
+
+        .navigation ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        .navigation ul li:hover,
+        .navigation ul li.hovered {
+            background-color: var(--white);
+        }
+
+        .navigation ul li:nth-child(1) {
+            margin-bottom: 40px;
+            pointer-events: none;
+        }
+
+        .navigation ul li a {
+            position: relative;
             display: block;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            width: 100%;
+            display: flex;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .navigation ul li:hover a,
+        .navigation ul li.hovered a {
+            color: var(--blue);
         }
 
-        .sidebar a:hover {
-            background-color: #34495e;
+        .navigation ul li a .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 75px;
+            text-align: center;
+        }
+        .navigation ul li a .icon ion-icon {
+            font-size: 1.75rem;
         }
 
+        .navigation ul li a .title {
+            position: relative;
+            display: block;
+            padding: 0 10px;
+            height: 60px;
+            line-height: 60px;
+            text-align: start;
+            white-space: nowrap;
+        }
+
+        /* --------- curve outside ---------- */
+        .navigation ul li:hover a::before,
+        .navigation ul li.hovered a::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -50px;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 35px 35px 0 10px var(--white);
+            pointer-events: none;
+        }
+        .navigation ul li:hover a::after,
+        .navigation ul li.hovered a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 35px -35px 0 10px var(--white);
+            pointer-events: none;
+        }
+
+        /* ===================== Main ===================== */
         .content {
-            flex: 1;
-            padding: 20px;
-            background-color: #ecf0f1;
-            overflow-y: auto;
+            position: absolute;
+            width: calc(100% - 300px);
+            left: 300px;
+            min-height: 100vh;
+            background: var(--white);
+            transition: 0.5s;
         }
-
+        .content.active {
+            width: calc(100% - 80px);
+            left: 80px;
+        }
     </style>
 </head>
+
 <body>
+<div class="navigation">
+    <ul>
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="logo-apple"></ion-icon>
+                </span>
+                <span class="title">Brand Name</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/home">
+                <span class="icon">
+                    <ion-icon name="home-outline"></ion-icon>
+                </span>
+                <span class="title">Trang chủ</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/dashboard/users">
+                <span class="icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </span>
+                <span class="title">Người dùng</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/dashboard/courses">
+                <span class="icon">
+                    <ion-icon name="book-outline"></ion-icon>
+                </span>
+                <span class="title">Khóa học</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/dashboard/registrations">
+                <span class="icon">
+                    <ion-icon name="clipboard-outline"></ion-icon>
+                </span>
+                <span class="title">Đơn đăng ký</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="settings-outline"></ion-icon>
+                </span>
+                <span class="title">Cài đặt</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/login">
+                <span class="icon">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                </span>
+                <span class="title">Đăng xuất</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<script src="../assets/js/main.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

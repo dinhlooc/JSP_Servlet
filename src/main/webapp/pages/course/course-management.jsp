@@ -18,7 +18,7 @@
     }
 
 </style>
-<div class="container mt-4">
+<div class="content container mt-4">
     <h2>Quản lý khoá học</h2>
     <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">Thêm khoá học mới</button>
