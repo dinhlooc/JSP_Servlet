@@ -51,5 +51,8 @@ public class CourseBO {
     public List<Course> searchCourses(String keyword) {
         return courseDAO.searchCourses(keyword);
     }
+    public int getStudentCountByCourseId(String courseId) {
+        return courseDAO.getStudentCountByCourseId(courseId);
+    }
 
 }

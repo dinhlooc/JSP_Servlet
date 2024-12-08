@@ -12,10 +12,10 @@
 
         <div class="row mb-4 align-items-center justify-content-center">
         <div class="col-md-4 ">
-		        <a href="GetCouseForCreateServlet" class="btn btn-success">Add Registration</a>
+		        <a href="/dashboard/registration/create" class="btn btn-success">Add Registration</a>
 		    </div>
 		    <div class="col-md-4 align-items-center">
-		        <form method="get" action="SearchProfileServlet" class="search-bar">
+		        <form method="get" action="/dashboard/registrations/searchs" class="search-bar">
 		            <div class="input-group">
 		                <input type="text" name="query" class="form-control" placeholder="Search by name, email, or phone" required>
 		                <button class="btn btn-primary" type="submit">Search</button>
@@ -53,7 +53,7 @@
                         <td><%= profile.getUserId() %></td>
                         <td><%= profile.getStatus() %></td>
                         <td>
-                            <a href="ProfileDetailServlet?id=<%= profile.getId() %>" class="btn btn-info">Xem</a>
+                            <a href="/dashboard/registration/detail?id=<%= profile.getId() %>" class="btn btn-info">Xem</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
         data-bs-target="#deleteModal"
         data-id="<%= profile.getId() %>"
@@ -128,7 +128,7 @@
 	    }
 
 	    // Gán href cho nút xác nhận
-	    confirmDeleteBtn.href = "DeleteProfileServlet?id=" + profileId;
+	    confirmDeleteBtn.href = "/dashboard/registration/delete?id=" + profileId;
 	});
 </script>
 <jsp:include page="../../layout/admin/footer.jsp" />

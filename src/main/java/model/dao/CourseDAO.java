@@ -151,6 +151,23 @@ public class CourseDAO extends DBContext {
         }
         return courses;
     }
+    public int getStudentCountByCourseId(String courseId) {
+        int studentCount = 0;
+        String sql = "SELECT COUNT(*) FROM RegistrationProfile WHERE course_id = ?";
 
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, courseId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                studentCount = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return studentCount;
+    }
 
 }

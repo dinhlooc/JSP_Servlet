@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Servlet implementation class SearchProfileServlet
  */
-@WebServlet("/SearchProfileServlet")
+@WebServlet("/dashboard/registrations/searchs")
 public class SearchProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class SearchProfileServlet extends HttpServlet {
             List<RegistrationProfile> profiles = profileBO.SearchProfileBO(query); // Gọi BO để tìm kiếm
             request.setAttribute("profiles", profiles); // Đưa danh sách kết quả vào request
         }
-        request.getRequestDispatcher("pages/registration/registration.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/registration/registration.jsp").forward(request, response);
     }
 
     /**

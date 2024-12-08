@@ -1,6 +1,7 @@
 package controller.server.register;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -9,7 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.bean.Course;
 import model.bean.RegistrationProfile;
+import model.bo.CourseBO;
 import model.bo.RegistrationProfileBO;
 /**
  * Servlet implementation class CreateProfileServlet
@@ -18,8 +21,14 @@ import model.bo.RegistrationProfileBO;
 public class CreateProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RegistrationProfileBO profileBO;
+    private CourseBO courseBO;
+
+
+
+    @Override
 	public void init() {
         profileBO = new RegistrationProfileBO();
+        courseBO=new CourseBO();
     }
 
     /**
@@ -34,8 +43,13 @@ public class CreateProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+        List<Course> courseList = courseBO.getAllCourses();
+
+        // Thêm danh sách khóa học vào request
+        request.setAttribute("courseList", courseList);
+
+        // Chuyển hướng tới trang CreateRegistration.jsp
+        request.getRequestDispatcher("/pages/registration/CreateRegistration.jsp").forward(request, response);
 	}
 
 	/**
@@ -70,7 +84,7 @@ public class CreateProfileServlet extends HttpServlet {
 
         boolean result = profileBO.addRegistrationProfile(profile);
         if (result) {
-            response.sendRedirect("GetAllProfile");
+            response.sendRedirect("/dashboard/registrations");
         } else {
             response.sendRedirect("error.jsp");
         }
