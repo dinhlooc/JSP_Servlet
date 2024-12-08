@@ -42,7 +42,7 @@
 
 <header class="header" data-header>
     <div class="container">
-        <a href="#" class="logo">
+        <a href="/home" class="logo">
             <img src="../../assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
         </a>
 
@@ -73,9 +73,6 @@
         </nav>
 
         <div class="header-actions">
-            <button class="header-action-btn" aria-label="toggle search" title="Search">
-                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-            </button>
 
             <!-- Check session to display Avatar with popup or Login/Register -->
             <%
@@ -91,14 +88,14 @@
                     <%
                         if(user.getRole().equalsIgnoreCase("ADMIN")){
                     %>
-                    <a href="/dashboard/users" class="menu-item">Dashboard</a>
+                    <a href="/dashboard/users" class="menu-item">Trang quản trị</a>
                     <%
                         }
                     %>
-                    <a href="/profile" class="menu-item">Xem thong tin ca nhan</a>
-                    <a href="/change-password" class="menu-item">Doi mat khau</a>
-                    <a href="/registered" class="menu-item">Khoa hoc cua toi</a>
-                    <a href="/logout" class="menu-item">Dang xuat</a>
+                    <a href="/profile" class="menu-item">Xem thông tin cá nhân</a>
+                    <a href="/change-password" class="menu-item">Đổi mật khẩu</a>
+                    <a href="/registered" class="menu-item">Khoá học của tôi</a>
+                    <a href="/logout" class="menu-item">Đăng xuất</a>
                 </div>
             </div>
             <%

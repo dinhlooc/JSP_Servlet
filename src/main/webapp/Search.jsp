@@ -44,7 +44,6 @@
     <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.scss">
 
-
 </head>
 <body id="top">
 <jsp:include page="layout/client/header.jsp"/>
@@ -55,45 +54,29 @@
             List<Course> courses = (List<Course>) request.getAttribute("courses");
             int number = (int) request.getAttribute("number");
         %>
-        <section class="section course" id="courses" aria-label="course">
-            <div class="container">
-                <!-- Form tìm kiếm -->
-                <div class="row justify-content-center mb-4">
-                    <div class="col-md-8">
-                        <form action="/courses-search" method="GET" class="form-inline">
-                            <div class="input-group input-group-lg w-100">
-                                <input
-                                        name="keyword"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Tìm kiếm khóa học"
-                                        aria-label="Tìm kiếm khóa học"
-                                        value="<%= keyword != null ? keyword : "" %>"
-                                >
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fas fa-search"></i> Tìm kiếm
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <section class="section">
 
-                <!-- Kết quả tìm kiếm -->
+            <div class="container">
+                <div class="form-container d-flex justify-content-center mb-4">
+                    <form action="/courses-search" class="d-flex align-items-center w-50">
+                        <input name="keyword" type="text" class="border border-secondary rounded-left p-3" style="height: 100%" placeholder="Tìm kiếm">
+                        <button class="btn btn-success rounded-left" style="height: 100%" type="submit">
+                            Tìm kiếm
+                        </button>
+                    </form>
+                </div>
                 <%
                     if (keyword != null && !keyword.isEmpty()) {
                 %>
                 <p class="section-subtitle text-center">Kết quả tìm kiếm</p>
-                <h2 class="h2 section-title text-center">
+                <h4 class="h4 section-title text-center mb-3">
                     Có <%= number %> kết quả tìm kiếm cho từ khóa "<%= keyword %>"
-                </h2>
+                </h4>
                 <%
                     }
                 %>
-
-                <!-- Danh sách khóa học -->
                 <ul class="grid-list">
+
                     <%
                         if (courses != null && !courses.isEmpty()) {
                             for (Course course : courses) {
@@ -112,7 +95,6 @@
 
                             <div class="card-content">
                                 <h3 class="h3">
-                                    <span class="badge">Beginner</span>
                                     <a href="course-detail?id=<%= course.getId() %>" class="card-title"><%= course.getName() %></a>
                                 </h3>
 
@@ -150,6 +132,7 @@
                         }
                     %>
                 </ul>
+
             </div>
         </section>
     </article>

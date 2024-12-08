@@ -172,8 +172,9 @@
 
                     <button type="submit" class="login-btn">Đăng Nhập</button>
 
-                    <div class="forgot-password">
-                        <a href="/register">Dang ki?</a>
+                    <div class="forgot-password d-flex">
+                        <p>Bạn chưa có tài khoản?</p>
+                        <a href="/register">Đăng ký ngay</a>
                     </div>
                 </form>
             </div>
@@ -186,4 +187,3 @@
 
 </body>
 </html>
-

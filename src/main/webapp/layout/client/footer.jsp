@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <footer class="footer" style="background-image: url('../../assets/images/footer-bg.png')">
 
     <div class="footer-top section">
@@ -14,15 +15,15 @@
                 </p>
 
                 <div class="wrapper">
-                    <span class="span">Add:</span>
+                    <span class="span">Địa chỉ:</span>
 
-                    <address class="address">70-80 Upper St Norwich NR2</address>
+                    <address class="address">98 Nguyễn Lương Bằng</address>
                 </div>
 
                 <div class="wrapper">
                     <span class="span">Call:</span>
 
-                    <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
+                    <a href="tel:0768999999" class="footer-link">0768999999</a>
                 </div>
 
                 <div class="wrapper">
@@ -34,82 +35,75 @@
             </div>
 
             <ul class="footer-list">
-
                 <li>
-                    <p class="footer-list-title">Online Platform</p>
+                    <p class="footer-list-title">Nền tảng trực tuyến</p>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Giới thiệu</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Courses</a>
+                    <a href="#" class="footer-link">Khoá học</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Instructor</a>
+                    <a href="#" class="footer-link">Giảng viên</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Events</a>
+                    <a href="#" class="footer-link">Sự kiện</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Instructor Profile</a>
+                    <a href="#" class="footer-link">Hồ sơ giảng viên</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Purchase Guide</a>
+                    <a href="#" class="footer-link">Hướng dẫn mua khóa học</a>
                 </li>
+
 
             </ul>
 
             <ul class="footer-list">
 
                 <li>
-                    <p class="footer-list-title">Links</p>
+                    <p class="footer-list-title">Liên kết</p>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Liên hệ với chúng tôi</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Gallery</a>
+                    <a href="#" class="footer-link">Thư viện ảnh</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">News & Articles</a>
+                    <a href="#" class="footer-link">Tin tức & Bài viết</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">FAQ's</a>
+                    <a href="#" class="footer-link">Câu hỏi thường gặp</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Sign In/Registration</a>
+                    <a href="#" class="footer-link">Đăng nhập/Đăng ký</a>
                 </li>
 
                 <li>
-                    <a href="#" class="footer-link">Coming Soon</a>
+                    <a href="#" class="footer-link">Sắp ra mắt</a>
                 </li>
+
 
             </ul>
 
             <div class="footer-list">
-
-                <p class="footer-list-title">Contacts</p>
-
-                <p class="footer-list-text">
-                    Enter your email address to register to our newsletter subscription
-                </p>
-
-                <form action="" class="newsletter-form">
-                    <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+                <form action="/register" class="newsletter-form">
 
                     <button type="submit" class="btn has-before">
-                        <span class="span">Subscribe</span>
+                        <span class="span">Đăng ký</span>
 
                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                     </button>
@@ -158,7 +152,7 @@
         <div class="container">
 
             <p class="copyright">
-                Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">codewithsadee</a>
+                Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">codewiththanh</a>
             </p>
 
         </div>

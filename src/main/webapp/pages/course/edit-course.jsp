@@ -3,7 +3,7 @@
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
-<div class="container mt-4">
+<div class="content p-4">
     <h2>Edit Course</h2>
     <%
         Course course = (Course) request.getAttribute("course");
@@ -54,6 +54,7 @@
     <% } else { %>
     <div class="alert alert-danger mt-3">Course not found.</div>
     <% } %>
+
 </div>
 </body>
 

@@ -4,9 +4,9 @@
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
-<div class="content">
+<div class="content p-4">
 
-    <h1>Registration Management</h1>
+    <h1 class="mb-4 text-center">Quản lý hồ sơ đăng ký</h1>
 
     <div class="container mt-5">
 

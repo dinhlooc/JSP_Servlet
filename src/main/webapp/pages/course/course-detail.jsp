@@ -4,50 +4,44 @@
 <%@ page import="model.bean.RegistrationProfile" %>
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Details</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 30px;
-        }
-        .course-details-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .course-details-card h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .course-details-card p {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        .course-details-card .btn {
-            background-color: #007bff;
-            color: white;
-        }
-        .course-details-card .btn:hover {
-            background-color: #0056b3;
-        }
-        .course-details-card .details-heading {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
 
-<div class="container">
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
+<html lang="en">
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .container {
+        margin-top: 30px;
+    }
+    .course-details-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .course-details-card h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .course-details-card p {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    .course-details-card .btn {
+        background-color: #007bff;
+        color: white;
+    }
+    .course-details-card .btn:hover {
+        background-color: #0056b3;
+    }
+    .course-details-card .details-heading {
+        font-weight: bold;
+    }
+</style>
+<div class="content p-4">
     <div class="course-details">
         <%
             String errorMessage = (String) request.getAttribute("errorMessage");
@@ -138,6 +132,3 @@
 </div>
 
 <script src="/assets/bootstrap-4-dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
