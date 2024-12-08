@@ -2,8 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <div class="container mt-4">
     <h2>Edit Course</h2>
     <%
@@ -49,7 +48,7 @@
         <!-- Submit Button -->
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-success">Cập nhật</button>
-            <a href="/courses" class="btn btn-primary">Trở lại</a>
+            <a href="/dashboard/courses" class="btn btn-primary">Trở lại</a>
         </div>
     </form>
     <% } else { %>

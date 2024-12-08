@@ -54,5 +54,8 @@ public class CourseBO {
     public int getStudentCountByCourseId(String courseId) {
         return courseDAO.getStudentCountByCourseId(courseId);
     }
+    public List<Course> getTopCoursesByRegistrations(int limit) {
+        return courseDAO.getTopCoursesByRegistrations(limit);
+    }
 
 }

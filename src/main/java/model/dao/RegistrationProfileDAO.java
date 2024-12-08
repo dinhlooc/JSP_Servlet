@@ -182,4 +182,30 @@ public class RegistrationProfileDAO extends DBContext {
         }
         return profiles;
     }
+    public List<RegistrationProfile> getRegistrationProfilesByUserId(String userId) {
+        List<RegistrationProfile> profiles = new ArrayList<>();
+        String sql = "SELECT * FROM RegistrationProfile WHERE user_id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                RegistrationProfile profile = new RegistrationProfile();
+                profile.setId(rs.getString("id"));
+                profile.setFullName(rs.getString("full_Name"));
+                profile.setBirthDate(rs.getDate("birth_date"));
+                profile.setCourseId(rs.getString("course_id"));
+                profile.setEmail(rs.getString("email"));
+                profile.setPhone(rs.getString("phone"));
+                profile.setIdCard(rs.getString("id_card"));
+                profile.setStudent(rs.getBoolean("is_student"));
+                profile.setGoals(rs.getString("goals"));
+                profile.setUserId(rs.getString("user_id"));
+                profile.setStatus(rs.getString("status"));
+                profiles.add(profile);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return profiles;
+    }
 }

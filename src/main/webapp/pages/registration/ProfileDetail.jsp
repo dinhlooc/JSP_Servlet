@@ -6,7 +6,7 @@
 
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <link href="/BTN//css/style.css" rel="stylesheet">
 <div class="content">
     <div class="container mt-5">

@@ -97,6 +97,7 @@
                     %>
                     <a href="/profile" class="menu-item">Xem thong tin ca nhan</a>
                     <a href="/change-password" class="menu-item">Doi mat khau</a>
+                    <a href="/registered" class="menu-item">Khoa hoc cua toi</a>
                     <a href="/logout" class="menu-item">Dang xuat</a>
                 </div>
             </div>

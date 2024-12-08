@@ -3,7 +3,7 @@
 <%@ page import="model.bean.RegistrationProfile" %>
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <div class="content">
 
     <h1>Registration Management</h1>

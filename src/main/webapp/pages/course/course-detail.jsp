@@ -10,9 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Details</title>
-    <link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
     <style>
-        <style>
         body {
             background-color: #f8f9fa;
         }
@@ -45,7 +44,6 @@
             font-weight: bold;
         }
     </style>
-    </style>
 </head>
 <body>
 
@@ -61,8 +59,6 @@
         <%
             }
         %>
-
-        <%-- Display course details if the course object exists --%>
         <%
             Course course = (Course) request.getAttribute("course");
             if (course != null) {
@@ -136,12 +132,12 @@
         %>
 
         <div class="mt-4 text-center">
-            <a href="/courses" class="btn btn-primary">Trở lại</a>
+            <a href="/dashboard/courses" class="btn btn-primary">Trở lại</a>
         </div>
     </div>
 </div>
 
-<script src="../../css/bootstrap-4-dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/bootstrap-4-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

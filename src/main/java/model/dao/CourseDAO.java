@@ -127,12 +127,10 @@ public class CourseDAO extends DBContext {
     }
     public List<Course> searchCourses(String keyword) {
         List<Course> courses = new ArrayList<>();
-        String query = "SELECT * FROM course WHERE name LIKE ? OR description LIKE ? OR id like ?";
+        String query = "SELECT * FROM course WHERE name LIKE ? ";
 
         try (PreparedStatement statement = connection.prepareStatement(query)){
             statement.setString(1, "%" + keyword + "%");
-            statement.setString(2, "%" + keyword + "%");
-            statement.setString(3, "%" + keyword + "%");
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Course course = new Course(
@@ -169,5 +167,34 @@ public class CourseDAO extends DBContext {
 
         return studentCount;
     }
+    public List<Course> getTopCoursesByRegistrations(int limit) {
+        List<Course> courses = new ArrayList<>();
+        String query = "SELECT c.*, COUNT(rp.id) AS registration_count " +
+                "FROM course c " +
+                "LEFT JOIN RegistrationProfile rp ON c.id = rp.course_id " +
+                "GROUP BY c.id, c.name, c.price, c.description, c.start_date, c.end_date " +
+                "ORDER BY registration_count DESC " +
+                "LIMIT ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, limit); // Giới hạn số lượng khóa học trả về
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Course course = new Course();
+                    course.setId(rs.getString("id"));
+                    course.setName(rs.getString("name"));
+                    course.setPrice(rs.getString("price"));
+                    course.setDescription(rs.getString("description"));
+                    course.setStartDate(rs.getDate("start_date"));
+                    course.setEndDate(rs.getDate("end_date"));
+                    courses.add(course);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courses;
+    }
+
 
 }

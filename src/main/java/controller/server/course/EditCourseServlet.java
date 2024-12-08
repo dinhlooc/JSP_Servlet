@@ -10,8 +10,7 @@ import model.bean.Course;
 import model.bo.CourseBO;
 
 import java.io.IOException;
-
-@WebServlet("/dashboard/course/update")
+@WebServlet(name = "UpdateCourseServlet", value ="/dashboard/course/update")
 public class EditCourseServlet extends HttpServlet {
     private CourseBO courseBO;
 

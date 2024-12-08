@@ -21,16 +21,16 @@ public class UserDAO extends DBContext {
         // Build the SQL query based on the 'type' parameter
         switch (type) {
             case "id":
-                sql="SELECT * FROM User WHERE id=?";
+                sql = "SELECT * FROM User WHERE id = ?";
                 break;
             case "full_name":
-                sql = "SELECT * FROM User WHERE full_name LIKE ?";
+                sql = "SELECT * FROM User WHERE LOWER(full_name) LIKE LOWER(?)";
                 break;
             case "email":
-                sql = "SELECT * FROM User WHERE email LIKE ?";
+                sql = "SELECT * FROM User WHERE LOWER(email) LIKE LOWER(?)";
                 break;
             case "role":
-                sql = "SELECT * FROM User WHERE role LIKE ?";
+                sql = "SELECT * FROM User WHERE LOWER(role) = LOWER(?)";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid search type: " + type);
@@ -38,19 +38,21 @@ public class UserDAO extends DBContext {
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            String searchKeyword = "";
-            if(type.equalsIgnoreCase("id")){
-                searchKeyword=query;
-            }else{
-                searchKeyword ="%" + query + "%";
+            String searchKeyword;
+
+            if (type.equalsIgnoreCase("id") || type.equalsIgnoreCase("role")) {
+                searchKeyword = query;
+            } else {
+                searchKeyword = "%" + query + "%";
             }
+
             st.setString(1, searchKeyword);
 
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
                 String hashPassword = rs.getString("password");
-                String password = "";
+                String password;
                 try {
                     password = AESUtil.decrypt(hashPassword);
                 } catch (Exception e) {
@@ -66,13 +68,13 @@ public class UserDAO extends DBContext {
                 );
                 list.add(user);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return list;
     }
+
     public List<User> getALL(){
         List<User> list = new ArrayList<>();
         String sql = "SELECT * FROM User";

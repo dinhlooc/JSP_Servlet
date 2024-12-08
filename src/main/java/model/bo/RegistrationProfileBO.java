@@ -55,4 +55,7 @@ public class RegistrationProfileBO {
     public List<RegistrationProfile> getProfileByCourse(String id){
         return registrationProfileDAO.getProfilesByCourse(id);
     }
+    public List<RegistrationProfile> getRegistrationProfilesByUserIdBO(String userId){
+    	return registrationProfileDAO.getRegistrationProfilesByUserId(userId);
+    }
 }

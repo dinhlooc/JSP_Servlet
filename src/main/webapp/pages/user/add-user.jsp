@@ -5,7 +5,7 @@
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 
 <!-- Include Bootstrap CSS -->
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 
 <style>
     :root {

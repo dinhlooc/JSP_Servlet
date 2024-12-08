@@ -27,8 +27,8 @@ public class index extends HttpServlet {
             query=request.getParameter("query");
         }
         String type="full_name";
-        if(request.getParameter("type") != null){
-            type=request.getParameter("type");
+        if(request.getParameter("searchBy") != null){
+            type=request.getParameter("searchBy");
         }
         List<User> list = userBO.searchUsersByName(type,query);
         request.setAttribute("users", list);
