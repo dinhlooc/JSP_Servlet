@@ -1,12 +1,12 @@
 package controller.LoginController;
 
+import lib.AESUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lib.AESUtil;
 import model.bean.User;
 import model.dao.UserDAO;
 
@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
     private UserDAO userDAO;
     public void init() {
         message = "Hello World!";
+        userDAO=new UserDAO();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

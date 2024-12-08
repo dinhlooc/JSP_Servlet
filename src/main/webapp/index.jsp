@@ -1,6 +1,6 @@
 <%@ page import="model.bean.Course" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +24,7 @@
     <!--
       - custom css link
     -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+
 
     <!--
       - google font link
@@ -43,6 +43,8 @@
     <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
     <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
     <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.scss">
 
 </head>
 

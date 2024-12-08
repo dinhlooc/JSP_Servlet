@@ -1,4 +1,4 @@
-package controller.client;
+package controller.server;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,7 +11,7 @@ import model.bo.CourseBO;
 
 import java.io.*;
 import java.util.*;
-@WebServlet("/")
+@WebServlet(name = "HomeServlet", value = "/home")
 public class HomeServlet extends HttpServlet {
 
     private CourseBO courseBO;
