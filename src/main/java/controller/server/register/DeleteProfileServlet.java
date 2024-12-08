@@ -35,10 +35,10 @@ public class DeleteProfileServlet extends HttpServlet {
             // Kiểm tra kết quả và chuyển hướng
             if (isDeleted) {
 
-                response.sendRedirect("GetAllProfile");
+                response.sendRedirect("/dashboard/registrations");
             } else {
                 // Nếu xóa thất bại, chuyển hướng và thông báo lỗi
-                response.sendRedirect("GetAllProfile");
+                response.sendRedirect("/dashboard/registrations");
             }
         } else {
             // Nếu không có ID hợp lệ, chuyển hướng đến trang danh sách và thông báo lỗi

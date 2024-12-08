@@ -93,7 +93,7 @@
    					 )">
     				Cập nhật
 				</button>
-				<a href="GetAllProfile" class="btn btn-secondary mt-3">Quay lại</a>
+				<a href="/dashboard/registrations"" class="btn btn-secondary mt-3">Quay lại</a>
 
                 <!-- Nút Xóa mở modal xác nhận -->
 
@@ -108,7 +108,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-							    <form action="UpdateProfileServlet" method="post">
+							    <form action="/dashboard/registration/update" method="post">
 								    <!-- Trường ID không chỉnh sửa -->
 								    <input type="hidden" id="profileId" name="id">
 

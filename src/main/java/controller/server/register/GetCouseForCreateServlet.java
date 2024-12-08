@@ -14,7 +14,7 @@ import model.bean.Course;
 /**
  * Servlet implementation class GetCouseForCreateServlet
  */
-@WebServlet("/dashboard/")
+@WebServlet("/dashboard/GetCourseForCreateServlet")
 public class GetCouseForCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CourseBO courseBO;
@@ -40,13 +40,7 @@ public class GetCouseForCreateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Course> courseList = courseBO.getAllCourses();
 
-        // Thêm danh sách khóa học vào request
-        request.setAttribute("courseList", courseList);
-
-        // Chuyển hướng tới trang CreateRegistration.jsp
-        request.getRequestDispatcher("/pages/registration/CreateRegistration.jsp").forward(request, response);
 
 	}
 

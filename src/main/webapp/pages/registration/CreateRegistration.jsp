@@ -7,7 +7,7 @@
 <div class="content">
     <div class="container mt-5">
         <h1 class="text-center text-primary mb-4">Create Registration Profile</h1>
-        <form action="CreateProfileServlet" method="POST">
+        <form action="/dashboard/registration/create" method="POST">
             <div class="row">
 
                 <div class="col-md-6">
