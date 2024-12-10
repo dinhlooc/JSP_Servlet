@@ -223,9 +223,8 @@
         <li>
             <a href="#">
                 <span class="icon">
-                    <ion-icon name="logo-apple"></ion-icon>
+                    <h1>EduWeb</h1>
                 </span>
-                <span class="title">Brand Name</span>
             </a>
         </li>
 

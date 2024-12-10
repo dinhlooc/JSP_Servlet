@@ -18,8 +18,8 @@
     }
 
 </style>
-<div class="content container mt-4">
-    <h2>Quản lý khoá học</h2>
+<div class="content p-4">
+    <h1 class="mb-4 text-center">Quản lý các khoá học</h1>
     <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">Thêm khoá học mới</button>
 
@@ -35,7 +35,7 @@
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
-            <thead  style="background-color: hsl(170, 75%, 41%);">
+            <thead class="thead-dark">
             <tr>
                 <th scope="col">Mã khoá học</th>
                 <th scope="col">Tên</th>
@@ -52,27 +52,25 @@
                     for (Course course : courses) {
             %>
             <tr>
-                <td><%= course.getId() %></td>
-                <td><%= course.getName() %></td>
+                <td class="text-wrap"><%= course.getId() %></td>
+                <td class="text-wrap"><%= course.getName() %></td>
                 <td><%= course.getPrice() %></td>
                 <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy").format(course.getStartDate()) %></td>
                 <td><%= new java.text.SimpleDateFormat("dd/MM/yyyy").format(course.getEndDate()) %></td>
                 <td class="text-center">
-                    <div class="d-flex">
-                        <a href="/dashboard/course/update?id=<%= course.getId() %>" class="btn btn-warning btn-sm mr-2">
+                    <div class="d-flex  justify-content-center">
+                        <a href="/dashboard/course/update?id=<%= course.getId() %>" class="btn btn-warning btn-sm mr-2 mb-2">
                             Sửa
                         </a>
-                        <a href="dashboard/course/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm mr-2"
+                        <a href="dashboard/course/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm mr-2 mb-2"
                            onclick="return confirm('Bạn muốn xoá khoá học này?');">
                             Xoá
                         </a>
-                        <a href="/dashboard/course/view?id=<%= course.getId() %>" class="btn btn-info btn-sm">
+                        <a href="/dashboard/course/view?id=<%= course.getId() %>" class="btn btn-info btn-sm mb-2">
                             Xem
                         </a>
                     </div>
                 </td>
-
-
             </tr>
             <%
                     }
@@ -83,13 +81,14 @@
     </div>
 
 </div>
-
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="createModalLabel">Thêm khoá học mới</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form method="post" action="/dashboard/course/create">

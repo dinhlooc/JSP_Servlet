@@ -55,22 +55,57 @@
                     <div class="col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Đăng ký khóa học</h5>
-                                <form action="RegisterCourseServlet" method="POST">
-                                    <input type="hidden" name="courseId" value="<%= course.getId() %>">
-                                    <div class="form-group">
-                                        <label for="name">Họ và tên</label>
-                                        <input type="text" id="name" name="name" class="form-control" required>
+                                <h3 class="card-title">Đăng ký khóa học</h3>
+                                <form action="/course-detail" method="POST">
+                                    <input type="text" id="courseId" name="courseId" value="<%=course.getId() %>" hidden>
+                                    <input type="text" id="status" name="status" value="active" hidden>
+
+                                    <div class="container mt-4">
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-8">
+                                                <label for="fullName" class="form-label">Họ và Tên:</label>
+                                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <label for="isStudent" class="form-label mr-2">Sinh Viên:</label>
+                                                <input type="checkbox" class="form-check-input" id="isStudent" name="isStudent">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="birthDate" class="form-label">Ngày sinh:</label>
+                                                <input type="date" class="form-control form-control-sm" id="birthDate" name="birthDate" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="phone" class="form-label">Điện thoại:</label>
+                                                <input type="text" class="form-control" id="phone" name="phone" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <label for="email" class="form-label">Email:</label>
+                                                <input type="email" class="form-control" id="email" name="email" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Hàng cho CCCD và Mục tiêu -->
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <label for="idCard" class="form-label">CCCD:</label>
+                                                <input type="text" class="form-control" id="idCard" name="idCard" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <label for="goals" class="form-label">Mục tiêu:</label>
+                                                <input type="text" class="form-control" id="goals" name="goals">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-sm w-90 " style="margin:auto">Đăng ký</button>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone">Số điện thoại</label>
-                                        <input type="text" id="phone" name="phone" class="form-control" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Đăng ký ngay</button>
                                 </form>
                             </div>
                         </div>

@@ -4,10 +4,10 @@
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 <!-- Include Bootstrap CSS from your local folder -->
-<link rel="stylesheet" href="../../css/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
 <div class="content p-4">
-    <h1 class="mb-4 text-center">User Management</h1>
-    <p class="text-center mb-4">Here, you can manage all user records. You can search for users, and update or delete their information.</p>
+    <h1 class="mb-4 text-center">Quản lý người dùng</h1>
+    <p class="text-center mb-4">Tại đây, bạn có thể quản lý tất cả các hồ sơ người dùng. Bạn có thể tìm kiếm người dùng và cập nhật hoặc xóa thông tin của họ.</p>
     <%
         String query = request.getParameter("query") != null ? request.getParameter("query") : "";
         String searchBy = request.getParameter("searchBy") != null ? request.getParameter("searchBy") : "";
@@ -20,18 +20,17 @@
             <div class="mr-3">
                 <select name="searchBy" class="form-control">
                     <option value="id" <%= "id".equals(searchBy) ? "selected" : "" %>>ID</option>
-                    <option value="full_name" <%= "full_name".equals(searchBy) ? "selected" : "" %>>Full Name</option>
+                    <option value="full_name" <%= "full_name".equals(searchBy) ? "selected" : "" %>>Tên</option>
                     <option value="email" <%= "email".equals(searchBy) ? "selected" : "" %>>Email</option>
-                    <option value="role" <%= "role".equals(searchBy) ? "selected" : "" %>>Role</option>
+                    <option value="role" <%= "role".equals(searchBy) ? "selected" : "" %>>Quyền</option>
                 </select>
             </div>
             <div>
-                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
             </div>
         </form>
         <div>
-            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Create New
-                User</button>
+            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Tạo người dùng mới</button>
         </div>
     </div>
     <!-- User Table -->
@@ -40,10 +39,10 @@
             <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Full Name</th>
+                <th>Họ tên</th>
                 <th>Email</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th>Quyền</th>
+                <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
@@ -65,10 +64,10 @@
                 <td><%= user.getRole() %></td>
                 <td>
                     <!-- Update Button -->
-                    <a href="/dashboard/user/update?id=<%= user.getId() %>" class="btn btn-warning btn-sm">Update
+                    <a href="/dashboard/user/update?id=<%= user.getId() %>" class="btn btn-warning btn-sm">Cập nhật
                     </a>
                     <!-- Delete Button -->
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" data-userid="<%= user.getId() %>">Delete</button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" data-userid="<%= user.getId() %>">Xóa</button>
                 </td>
             </tr>
             <%
@@ -83,17 +82,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this user?
+                Bạn thực sự muốn xóa người dùng
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a id="deleteBtn" href="#" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <a id="deleteBtn" href="#" class="btn btn-danger">Xóa</a>
             </div>
         </div>
     </div>

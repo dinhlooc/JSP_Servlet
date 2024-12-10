@@ -7,6 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.bean.User;
 import model.bo.RegistrationProfileBO;
 import java.util.List;
 import model.bean.RegistrationProfile;
@@ -27,8 +29,9 @@ public class RegistrationUserServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String userId = request.getParameter("userId");
+        HttpSession session = request.getSession();
+        User user=(User) session.getAttribute("user");
+        String userId = user.getId();
 
         if (userId != null && !userId.isEmpty()) {
 
@@ -43,6 +46,7 @@ public class RegistrationUserServlet extends HttpServlet {
             response.getWriter().append("User ID is required.");
         }
     }
+
 
 
 }
