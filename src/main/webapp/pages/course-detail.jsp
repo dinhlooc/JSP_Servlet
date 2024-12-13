@@ -1,8 +1,11 @@
 <%@ page import="model.bean.Course" %>
 <%@ page import="java.util.List" %>
+<%@ page import="model.bean.RegistrationProfile" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
     Course course = (Course) request.getAttribute("course");
+    String iduser = (String) request.getAttribute("userId");
+    List<RegistrationProfile> profiles = (List<RegistrationProfile>) request.getAttribute("profiles");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,57 +59,94 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">Đăng ký khóa học</h3>
-                                <form action="/course-detail" method="POST">
+                                <%
+                                    boolean isRegistered = false;
+                                    if(profiles!=null){
+                                        for (RegistrationProfile profile : profiles) {
+                                            if (profile.getUserId().equals(iduser) && profile.getCourseId().equals(course.getId())) {
+                                                isRegistered = true;
+                                                break;
+                                            }
+                                        }
+
+                                    }
+
+                                %>
+                                <form action="/course-detail" method="POST" id="registrationForm">
                                     <input type="text" id="courseId" name="courseId" value="<%=course.getId() %>" hidden>
                                     <input type="text" id="status" name="status" value="active" hidden>
 
                                     <div class="container mt-4">
 
-                                        <div class="row mb-3">
+                                        <!-- Họ và Tên + Sinh Viên -->
+                                        <div class="row mb-4">
                                             <div class="col-md-8">
                                                 <label for="fullName" class="form-label">Họ và Tên:</label>
-                                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                                <input type="text" class="form-control form-control-lg" id="fullName" name="fullName" required>
                                             </div>
-                                            <div class="col-md-4 ">
-                                                <label for="isStudent" class="form-label mr-2">Sinh Viên:</label>
-                                                <input type="checkbox" class="form-check-input" id="isStudent" name="isStudent">
+                                            <div class="col-md-4 d-flex align-items-center">
+                                                <div>
+                                                    <label for="isStudent" class="form-label mr-2">Sinh Viên:</label>
+                                                    <input type="checkbox" class="form-check-input" id="isStudent" name="isStudent">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+
+                                        <!-- Ngày sinh + Điện thoại -->
+                                        <div class="row mb-4">
                                             <div class="col-md-6">
                                                 <label for="birthDate" class="form-label">Ngày sinh:</label>
-                                                <input type="date" class="form-control form-control-sm" id="birthDate" name="birthDate" required>
+                                                <input type="date" class="form-control form-control-lg" id="birthDate" name="birthDate" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="phone" class="form-label">Điện thoại:</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" required>
+                                                <input type="text" class="form-control form-control-lg" id="phone" name="phone" required>
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
+                                        <!-- Email -->
+                                        <div class="row mb-4">
                                             <div class="col-md-12">
                                                 <label for="email" class="form-label">Email:</label>
-                                                <input type="email" class="form-control" id="email" name="email" required>
+                                                <input type="email" class="form-control form-control-lg" id="email" name="email" required>
                                             </div>
                                         </div>
 
-                                        <!-- Hàng cho CCCD và Mục tiêu -->
-                                        <div class="row mb-3">
+                                        <!-- CCCD -->
+                                        <div class="row mb-4">
                                             <div class="col-md-12">
                                                 <label for="idCard" class="form-label">CCCD:</label>
-                                                <input type="text" class="form-control" id="idCard" name="idCard" required>
+                                                <input type="text" class="form-control form-control-lg" id="idCard" name="idCard" required>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+
+                                        <!-- Mục tiêu -->
+                                        <div class="row mb-4">
                                             <div class="col-md-12">
                                                 <label for="goals" class="form-label">Mục tiêu:</label>
-                                                <input type="text" class="form-control" id="goals" name="goals">
+                                                <input type="text" class="form-control form-control-lg" id="goals" name="goals">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-sm w-90 " style="margin:auto">Đăng ký</button>
+
+
+                                        <% if (!isRegistered) { %>
+                                        <button type="submit" class="btn btn-primary btn-sm w-90" style="margin:auto">Đăng ký</button>
+                                        <% } else { %>
+                                        <p class="text-success">Bạn đã đăng ký khóa học này!</p>
+                                        <% } %>
 
                                     </div>
                                 </form>
+                                <script>
+                                    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+                                        const isUserLoggedIn = <%= (session.getAttribute("user") != null) ? "true" : "false" %>;
+                                        if (!isUserLoggedIn) {
+                                            e.preventDefault();
+                                            alert("Bạn cần đăng nhập để thực hiện đăng ký.");
+                                            window.location.href = "/login";
+                                        }
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>

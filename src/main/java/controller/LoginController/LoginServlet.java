@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("pages/auth/login.jsp").forward(request, response);
             } else {
                 session.setAttribute("user", user);
-                response.sendRedirect("/");
+                response.sendRedirect("/home");
             }
         }
     }

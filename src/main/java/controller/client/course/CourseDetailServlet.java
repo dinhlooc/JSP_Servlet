@@ -13,6 +13,7 @@ import model.bo.CourseBO;
 import model.bo.RegistrationProfileBO;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @WebServlet("/course-detail")
@@ -28,15 +29,33 @@ public class CourseDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String courseId = request.getParameter("id");
         Course course = courseBO.getCourseById(courseId);
+        HttpSession session = request.getSession();
+        User user=(User) session.getAttribute("user");
+        if(user!=null) {
+            String userId=user.getId();
+            if (course != null) {
+                request.setAttribute("course", course);
+                int studentCount = courseBO.getStudentCountByCourseId(course.getId());
+                List<RegistrationProfile> profiles = profileBO.getRegistrationProfilesByUserIdBO(userId);
+                request.setAttribute("userId", userId);
+                request.setAttribute("profiles", profiles);
+                request.setAttribute("studentCount",studentCount);
+                request.getRequestDispatcher("/pages/course-detail.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("error.jsp");
+            }
+            }else {
+            if (course != null) {
+                request.setAttribute("course", course);
+                int studentCount = courseBO.getStudentCountByCourseId(course.getId());
+                request.setAttribute("studentCount",studentCount);
+                request.getRequestDispatcher("/pages/course-detail.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("error.jsp");
+            }
 
-        if (course != null) {
-            request.setAttribute("course", course);
-            int studentCount = courseBO.getStudentCountByCourseId(course.getId());
-            request.setAttribute("studentCount",studentCount);
-            request.getRequestDispatcher("/pages/course-detail.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("error.jsp");
         }
+
     }
 
     @Override

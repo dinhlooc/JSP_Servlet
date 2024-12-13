@@ -16,6 +16,5 @@ public class DBContext {
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         }
-
     }
 }

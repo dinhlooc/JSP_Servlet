@@ -30,7 +30,7 @@ public class HomeServlet extends HttpServlet {
             request.setAttribute("studentCount_" + course.getId(), studentCount);
         }
         request.setAttribute("courseList", courses);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
         dispatcher.forward(request, response);
     }
 }

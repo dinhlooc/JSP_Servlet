@@ -36,7 +36,7 @@ public class ViewCourseServlet extends HttpServlet {
                 List<RegistrationProfile> profiles = registrationProfileBO.getProfileByCourse(id);
                 request.setAttribute("course", course);
                 request.setAttribute("profiles", profiles);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/course/course-detail.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/course/view-course.jsp");
                 dispatcher.forward(request, response);
                 return;
             } else {

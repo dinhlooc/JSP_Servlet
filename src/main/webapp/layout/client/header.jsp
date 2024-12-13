@@ -61,13 +61,13 @@
                     <a href="/home" class="navbar-link" data-nav-link>Trang chủ</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#about" class="navbar-link" data-nav-link>Về chúng tôi</a>
+                    <a href="/home#about" class="navbar-link" data-nav-link>Về chúng tôi</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#courses" class="navbar-link" data-nav-link>Khoá học</a>
+                    <a href="/home#courses" class="navbar-link" data-nav-link>Khoá học</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+                    <a href="/home#blog" class="navbar-link" data-nav-link>Blog</a>
                 </li>
             </ul>
         </nav>
