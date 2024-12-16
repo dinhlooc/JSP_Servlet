@@ -13,6 +13,9 @@
         String searchBy = request.getParameter("searchBy") != null ? request.getParameter("searchBy") : "";
     %>
     <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Tạo người dùng mới</button>
+        </div>
         <form action="/dashboard/users" method="get" class="d-flex">
             <div class="mr-3">
                 <input type="text" name="query" class="form-control" placeholder="Search" value="<%= query %>" />
@@ -29,9 +32,7 @@
                 <button class="btn btn-primary" type="submit">Tìm kiếm</button>
             </div>
         </form>
-        <div>
-            <button onclick="window.location.href='/dashboard/user/create'" class="btn btn-success btn-sm">Tạo người dùng mới</button>
-        </div>
+
     </div>
     <!-- User Table -->
     <div class="table-responsive">
