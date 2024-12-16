@@ -99,7 +99,17 @@
 
 
 
+.user-greeting {
+  font-size: 16px;
+  color: var(--main-color); /* Green color from root CSS variable */
+  font-weight: bold;
+  margin-left: 15px;
+}
 
+.user-greeting strong {
+  font-size: 18px;
+  color: #333; /* Dark color for user's name */
+}
 
 /*-----------------------------------*\
   #RESET

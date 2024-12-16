@@ -81,6 +81,9 @@
                 if (user != null) {
             %>
             <!-- Avatar with Popup -->
+            <div class="user-greeting">
+                <span>Chào, <strong>${user.fullName}</strong></span>
+            </div>
             <div class="avatar-menu">
                 <img src="../../assets/images/avatar.jpg"
                      alt="User Avatar" class="avatar">

@@ -50,17 +50,17 @@ public class ChangePassword extends HttpServlet {
         boolean hasError = false;
 
         if (!user.getPassword().equals(currentPassword)) {
-            request.setAttribute("error_currentPassword", "Current password is incorrect.");
+            request.setAttribute("error_currentPassword", "Mật khẩu hiện tại không chính xác!");
             hasError = true;
         }
 
         if (newPassword == null || newPassword.length() < 6) {
-            request.setAttribute("error_newPassword", "New password must be at least 6 characters.");
+            request.setAttribute("error_newPassword", "Mật khẩu mới phải có ít nhất 6 kí tự");
             hasError = true;
         }
 
         if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("error_confirmPassword", "Passwords do not match.");
+            request.setAttribute("error_confirmPassword", "Xác nhận mật khẩu không khớp");
             hasError = true;
         }
 

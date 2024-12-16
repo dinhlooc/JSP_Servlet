@@ -99,14 +99,13 @@
 </div>
 <jsp:include page="../../layout/admin/footer.jsp" />
 <script src="../../assets/js/jquery-3.6.0.min.js"></script>
-<script src="../../css/bootstrap-4-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/bootstrap-4-dist/js/bootstrap.bundle.js"></script>
 <script>
     $('#deleteModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Button that triggered the modal
-        var userId = button.data('userid'); // Extract info from data-* attributes
-        var deleteUrl = "/dashboard/user/delete?id=" + userId;
-        // Set the delete button URL to the correct delete action
-        var modal = $(this);
+        let button = $(event.relatedTarget);
+        let userId = button.data('userid');
+        let deleteUrl = "/dashboard/user/delete?id=" + userId;
+        let modal = $(this);
         modal.find('#deleteBtn').attr('href', deleteUrl);
     });
 </script>

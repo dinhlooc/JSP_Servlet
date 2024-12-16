@@ -54,7 +54,7 @@
 
         .navigation ul {
             position: absolute;
-            top: 0;
+            top: 30px;
             left: 0;
             width: 100%;
         }
@@ -73,7 +73,7 @@
         }
 
         .navigation ul li:nth-child(1) {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             pointer-events: none;
         }
 
@@ -221,10 +221,8 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#">
-                <span class="icon">
-                    <h1>EduWeb</h1>
-                </span>
+            <a href="/home" class="logo">
+                <img src="../../assets/images/logo.svg" width="162" height="50" alt="EduWeb logo">
             </a>
         </li>
 

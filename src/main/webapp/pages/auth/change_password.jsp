@@ -131,12 +131,13 @@
         <section class="section">
             <div class="main_login">
                 <form action="/change-password" method="POST">
-                    <h2>Thay doi mat khau</h2>
+                    <h2>Thay đổi mật khẩu</h2>
 
                     <!-- Email input -->
                     <div class="input-group">
-                        <label for="email">Mat khau hien tai:</label>
-                        <input type="password" id="email" name="currentPassword" placeholder="Nhap mat khau hien tai" required>
+                        <label for="email">Mật khẩu hiện tại:</label>
+                        <input type="password" id="email" name="currentPassword" placeholder="Nhập mật khẩu hiện tại"
+                               required>
 
                         <!-- Display error message for invalid email -->
                         <%
@@ -152,8 +153,9 @@
 
                     <!-- Password input -->
                     <div class="input-group">
-                        <label for="password">Mật khẩu moi:</label>
-                        <input type="password" id="password" name="newPassword" placeholder="Nhập mật khẩu moi" required>
+                        <label for="password">Mật khẩu mới:</label>
+                        <input type="password" id="password" name="newPassword" placeholder="Nhập mật khẩu mới"
+                               required>
 
                         <!-- Display error message for incorrect password -->
                         <%
@@ -167,8 +169,8 @@
                         %>
                     </div>
                     <div class="input-group">
-                        <label for="password">Xac nhan mật khẩu moi:</label>
-                        <input type="password" id="password" name="confirmPassword" placeholder="Xac nhan mat khau moi"
+                        <label for="password">Xác nhận mật khẩu mới:</label>
+                        <input type="password" id="password" name="confirmPassword" placeholder="Xác nhận mật khẩu mới"
                                required>
 
                         <!-- Display error message for incorrect password -->
@@ -182,7 +184,7 @@
                             }
                         %>
                     </div>
-                    <button type="submit" class="login-btn">Doi mat khau</button>
+                    <button type="submit" class="login-btn">Đổi mật khẩu</button>
                 </form>
             </div>
         </section>
