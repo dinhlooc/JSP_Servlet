@@ -27,10 +27,10 @@ public class DeleteCourseServlet extends HttpServlet {
             boolean result = courseBO.deleteCourse(id);
 
             if (result) {
-                response.sendRedirect(request.getContextPath() + "/courses");
+                response.sendRedirect(request.getContextPath() + "/dashboard/courses");
             } else {
                 request.setAttribute("error", "Failed to delete the course.");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/courses");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/dashboard/courses");
                 dispatcher.forward(request, response);
             }
         } else {

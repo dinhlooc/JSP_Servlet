@@ -9,7 +9,7 @@
         Course course = (Course) request.getAttribute("course");
         if (course != null) {
     %>
-    <form method="post" action="/courses/edit">
+    <form method="post" action="/dashboard/course/update">
         <!-- Course ID (hidden field) -->
         <input type="hidden" name="id" value="<%= course.getId() %>" />
 

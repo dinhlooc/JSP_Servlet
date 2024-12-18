@@ -4,6 +4,7 @@
 <jsp:include page="../../layout/admin/header.jsp" />
 <jsp:include page="../../layout/admin/sidebar.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-4-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
 <style>
     .btn:hover {
         opacity: 0.9;
@@ -62,7 +63,7 @@
                         <a href="/dashboard/course/update?id=<%= course.getId() %>" class="btn btn-warning btn-sm mr-2 mb-2">
                             Sửa
                         </a>
-                        <a href="dashboard/course/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm mr-2 mb-2"
+                        <a href="/dashboard/course/delete?id=<%= course.getId() %>" class="btn btn-danger btn-sm mr-2 mb-2"
                            onclick="return confirm('Bạn muốn xoá khoá học này?');">
                             Xoá
                         </a>
@@ -151,7 +152,7 @@
         if (courseId.trim() === "") {
             return;
         }
-        fetch('courses/checkid?courseId=' + encodeURIComponent(courseId))
+        fetch('/dashboard/course/checkid?courseId=' + encodeURIComponent(courseId))
             .then(response => response.text())
             .then(data => {
                 var errorElement = document.getElementById("courseIdError");

@@ -28,7 +28,7 @@ public class EditCourseServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/course/edit-course.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/courses");
+            response.sendRedirect(request.getContextPath() + "/dashboard/courses");
         }
     }
     @Override
@@ -44,7 +44,7 @@ public class EditCourseServlet extends HttpServlet {
         boolean result = courseBO.updateCourse(course);
 
         if (result) {
-            response.sendRedirect(request.getContextPath() + "/courses");
+            response.sendRedirect(request.getContextPath() + "/dashboard/courses");
         } else {
             request.setAttribute("error", "Failed to update course.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("course_edit.jsp");

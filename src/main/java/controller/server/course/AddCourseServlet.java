@@ -34,7 +34,7 @@ public class AddCourseServlet extends HttpServlet {
         boolean result = courseBO.addCourse(course);
 
         if (result) {
-            response.sendRedirect(request.getContextPath() + "/courses");
+            response.sendRedirect(request.getContextPath() + "/dashboard/courses");
         } else {
             request.setAttribute("error", "Failed to add course.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("course.jsp");
