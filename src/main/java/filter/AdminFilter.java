@@ -37,7 +37,7 @@ public class AdminFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         User user=(User) session.getAttribute("user");
-        if (user.getRole().compareTo("ADMIN")!=0) {
+        if (!user.getRole().equalsIgnoreCase("ADMIN")) {
             res.sendRedirect("/home");
         } else {
             chain.doFilter(request, response);

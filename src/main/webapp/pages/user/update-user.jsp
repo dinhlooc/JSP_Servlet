@@ -91,7 +91,8 @@
             </div>
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" name="Email" id="Email" value="<%=user.getEmail()%>" required>
+                <input type="email" readonly class="form-control" name="Email" id="Email" value="<%=user.getEmail()%>"
+                       required>
             </div>
             <div class="form-group">
                 <label for="Password">Password</label>
@@ -101,8 +102,8 @@
             <div class="form-group">
                 <label for="Role">Role</label>
                 <select class="form-control" name="Role" id="Role" required>
-                    <option value="ADMIN" selected="<%=user.getRole().equalsIgnoreCase("ADMIN")%>">ADMIN</option>
-                    <option value="USER" selected="<%=user.getRole().equalsIgnoreCase("USER")%>">USER</option>
+                    <option value="ADMIN" <%= user.getRole().equalsIgnoreCase("ADMIN") ? "selected" : "" %>>ADMIN</option>
+                    <option value="USER" <%= user.getRole().equalsIgnoreCase("USER") ? "selected" : "" %>>USER</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Update User</button>

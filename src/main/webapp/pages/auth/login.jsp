@@ -141,7 +141,11 @@
                     <!-- Email input -->
                     <div class="input-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                        <%
+                            String email = (String) request.getAttribute("email");
+                        %>
+                        <input type="email" id="email" name="email" placeholder="Nhập email của bạn" value="<%= email != null ? email : "" %>" required>
+
 
                         <!-- Display error message for invalid email -->
                         <%

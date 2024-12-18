@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("pages/auth/login.jsp").forward(request, response);
         } else {
             if (!user.getPassword().equals(password)) {
+                request.setAttribute("email",email);
                 request.setAttribute("error_pass", "password incorrect");
                 request.getRequestDispatcher("pages/auth/login.jsp").forward(request, response);
             } else {

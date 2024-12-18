@@ -126,6 +126,13 @@
             box-shadow: 35px 35px 0 10px var(--white);
             pointer-events: none;
         }
+        .navigation ul li.hovered {
+            background-color: var(--white);
+        }
+
+        .navigation ul li.hovered a {
+            color: var(--blue);
+        }
         .navigation ul li:hover a::after,
         .navigation ul li.hovered a::after {
             content: "";
@@ -282,7 +289,28 @@
     </ul>
 </div>
 
+<script>
+    // Select all navigation list items
+    const navItems = document.querySelectorAll('.navigation ul li');
 
+    // Get the current URL path
+    const currentPath = window.location.pathname;
+
+    // Loop through each item and check if it matches the current path
+    navItems.forEach(item => {
+        const link = item.querySelector('a');
+        const href = link ? link.getAttribute('href') : '';
+
+        // Compare the href with the current path
+        if (href && currentPath.startsWith(href)) {
+            // Add the 'hovered' class if the href matches the current path
+            item.classList.add('hovered');
+        } else {
+            // Remove the 'hovered' class for other items
+            item.classList.remove('hovered');
+        }
+    });
+</script>
 <script src="../assets/js/main.js"></script>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

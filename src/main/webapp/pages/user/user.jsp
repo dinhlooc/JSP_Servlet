@@ -68,7 +68,8 @@
                     <a href="/dashboard/user/update?id=<%= user.getId() %>" class="btn btn-warning btn-sm">Cập nhật
                     </a>
                     <!-- Delete Button -->
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" data-userid="<%= user.getId() %>">Xóa</button>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"
+                            data-userid="<%= user.getId() %>" data-username="<%= user.getFullName() %>">Xóa</button>
                 </td>
             </tr>
             <%
@@ -89,7 +90,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Bạn thực sự muốn xóa người dùng
+                Bạn thực sự muốn xóa người dùng <strong id="userName"></strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
@@ -103,10 +104,17 @@
 <script src="../../assets/bootstrap-4-dist/js/bootstrap.bundle.js"></script>
 <script>
     $('#deleteModal').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let userId = button.data('userid');
+        let button = $(event.relatedTarget); // Button that triggered the modal
+        let userId = button.data('userid'); // Extract info from data-* attributes
+        let userName = button.data('username'); // Extract the user's full name
+
         let deleteUrl = "/dashboard/user/delete?id=" + userId;
         let modal = $(this);
+
+        // Set the user name in the modal
+        modal.find('#userName').text(userName);
+
+        // Update the delete button URL
         modal.find('#deleteBtn').attr('href', deleteUrl);
     });
 </script>
