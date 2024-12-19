@@ -50,4 +50,8 @@
         <url-pattern>/dashboard/users</url-pattern>
         <url-pattern>/dashboard/user/update</url-pattern>
     </filter-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
 </web-app>
